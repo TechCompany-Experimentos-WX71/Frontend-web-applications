@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { User } from '../../../../models/user/user';
 import { Router } from '@angular/router';
 import { GlobalVariable } from 'src/app/shared/GlobalVariable';
-import { Validators } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-forgot-password',
@@ -11,10 +11,10 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./forgot-password.component.css'],
 })
 export class ForgotPasswordComponent implements OnInit {
+  signupForm!: FormGroup;
+
   userId: number = 0;
-
   userData: User;
-
   display1 = true;
   display2 = false;
   // basePath = 'http://localhost:3000/api/v1/users';
@@ -26,14 +26,18 @@ export class ForgotPasswordComponent implements OnInit {
     }),
   };
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {
     this.userData = {} as User;
     this.signupForm = this.formBuilder.group({
       typeofuser: [
         '',
         { validators: [Validators.required], updatedOn: 'change' },
       ],
-    })
+    });
   }
 
   ngOnInit(): void {}
@@ -41,7 +45,7 @@ export class ForgotPasswordComponent implements OnInit {
   getInputValue(email: any) {
     console.log(email);
     // if (this.signupForm.value.typeofuser == 'client') {
-      this.http
+    this.http
       .get<any>(`${this.basePath}/client`, this.httpOptions)
       .subscribe((res) => {
         const data = res.find((user: any) => {
@@ -59,7 +63,8 @@ export class ForgotPasswordComponent implements OnInit {
           alert('Unregistered email');
         }
       });
-    }
+  }
+  /*
     else{
       this.http
       .get<any>(`${this.basePath}/drivers`, this.httpOptions)
@@ -82,7 +87,7 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
 
-  }
+  }*/
 
   updatePassword(password: any) {
     console.log(password);
