@@ -93,3 +93,4 @@ export class HeaderCComponent implements OnInit {
     localStorage.setItem('ContractId', id);
   }
 }
+

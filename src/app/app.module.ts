@@ -53,8 +53,6 @@ import { ForgotPasswordComponent } from './login/pages/password/forgot-password/
 import { NotificationsComponent } from './client/pages/notifications/notifications.component';
 import { PayContractCComponent } from './client/pages/pay-contract-c/pay-contract-c.component';
 
-import { CardSettingComponent } from './components/card-setting/card-setting.component';
-import { AddCardComponent } from './components/add-card/add-card.component';
 
 import { ContractsCComponent } from './client/pages/contracts-c/contracts-c.component';
 import { EndContractComponent } from './driver/pages/end-contract/end-contract.component';
@@ -92,8 +90,6 @@ import { AddInfoOneComponent } from './components/add-info-one/add-info-one.comp
     FootersComponent,
     NotificationsComponent,
     PayContractCComponent,
-    CardSettingComponent,
-    AddCardComponent,
     ContractsCComponent,
     EndContractComponent,
     RequestServiceComponent,

@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../../../models/user/user';
 import { Router } from '@angular/router';
 import { GlobalVariable } from 'src/app/shared/GlobalVariable';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-forgot-password',
@@ -27,15 +28,21 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) {
     this.userData = {} as User;
+    this.signupForm = this.formBuilder.group({
+      typeofuser: [
+        '',
+        { validators: [Validators.required], updatedOn: 'change' },
+      ],
+    })
   }
 
   ngOnInit(): void {}
 
   getInputValue(email: any) {
     console.log(email);
-
-    this.http
-      .get<any>(`${this.basePath}`, this.httpOptions)
+    // if (this.signupForm.value.typeofuser == 'client') {
+      this.http
+      .get<any>(`${this.basePath}/client`, this.httpOptions)
       .subscribe((res) => {
         const data = res.find((user: any) => {
           if (user.email === email) {
@@ -52,6 +59,29 @@ export class ForgotPasswordComponent implements OnInit {
           alert('Unregistered email');
         }
       });
+    }
+    else{
+      this.http
+      .get<any>(`${this.basePath}/drivers`, this.httpOptions)
+      .subscribe((res) => {
+        const data = res.find((user: any) => {
+          if (user.email === email) {
+            this.userId = user.id;
+            this.userData = user;
+            return true;
+          } else return false;
+        });
+
+        if (data) {
+          this.display1 = false;
+          this.display2 = true;
+        } else {
+          alert('Unregistered email');
+        }
+      });
+    }
+
+
   }
 
   updatePassword(password: any) {
