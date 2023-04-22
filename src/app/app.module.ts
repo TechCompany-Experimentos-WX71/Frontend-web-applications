@@ -59,9 +59,6 @@ import { EndContractComponent } from './driver/pages/end-contract/end-contract.c
 import { RequestServiceComponent } from './client/request-service/request-service.component';
 import { SupportComponent } from './components/support/support.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { SettingsComponent } from './components/settings/settings.component';
-import { SettingsDComponent } from './driver/pages/settings-d/settings-d.component';
-import { SettingsCComponent } from './client/pages/settings-c/settings-c.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddCommentDialogComponent } from './components/add-comment-dialog/add-comment-dialog.component';
 import { AddInfoOneComponent } from './components/add-info-one/add-info-one.component';
@@ -95,9 +92,6 @@ import { AddInfoOneComponent } from './components/add-info-one/add-info-one.comp
     RequestServiceComponent,
     SupportComponent,
     ProfileComponent,
-    SettingsComponent,
-    SettingsDComponent,
-    SettingsCComponent,
     PageNotFoundComponent,
     AddCommentDialogComponent,
     AddInfoOneComponent,

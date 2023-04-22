@@ -52,6 +52,10 @@ export class HeaderDComponent implements OnInit {
     //  this.pendingcontrats = data;
     //});
   }
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
   showAccept() {
     this.accepted = true;
   }

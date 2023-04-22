@@ -16,7 +16,7 @@ export class NotificationsComponent implements OnInit{
   ngOnInit(): void {}
  
   showModal(){
-    this.show=true;
+    this.show=!this.show;
   }
   hideModal(){
     this.show=false;

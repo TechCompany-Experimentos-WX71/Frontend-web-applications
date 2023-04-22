@@ -44,9 +44,9 @@ export class ForgotPasswordComponent implements OnInit {
 
   getInputValue(email: any) {
     console.log(email);
-    // if (this.signupForm.value.typeofuser == 'client') {
+    if (this.signupForm.value.typeofuser == 'client') {
     this.http
-      .get<any>(`${this.basePath}/client`, this.httpOptions)
+      .get<any>(`${this.basePath}/clients`, this.httpOptions)
       .subscribe((res) => {
         const data = res.find((user: any) => {
           if (user.email === email) {
@@ -64,7 +64,7 @@ export class ForgotPasswordComponent implements OnInit {
         }
       });
   }
-  /*
+  
     else{
       this.http
       .get<any>(`${this.basePath}/drivers`, this.httpOptions)
@@ -87,20 +87,34 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
 
-  }*/
+  }
 
   updatePassword(password: any) {
     console.log(password);
     this.userData.password = password;
-    this.http
+    if (this.signupForm.value.typeofuser == 'client') {
+      this.http
       .put<User>(
-        `${this.basePath}/${this.userId}`,
+        `${this.basePath}/clients/${this.userId}`,
         JSON.stringify(this.userData),
         this.httpOptions
-      )
-      .subscribe((res) => {
+      ).subscribe((res) => {
         alert('Password changed');
         this.router.navigate(['/login']);
       });
+    }
+    else{
+      this.http
+      .put<User>(
+        `${this.basePath}/drivers/${this.userId}`,
+        JSON.stringify(this.userData),
+        this.httpOptions
+      ).subscribe((res) => {
+        alert('Password changed');
+        this.router.navigate(['/login']);
+      });
+    }
+
+      
   }
 }

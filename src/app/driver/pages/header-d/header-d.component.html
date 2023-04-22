@@ -6,8 +6,8 @@
   <a mat-button [routerLink]="'/home-d'">Home</a>
   <a mat-button [routerLink]="'/my-profile-d'">My Profile</a>
   <a mat-button [routerLink]="'/contracts-d'">Contracts</a>
-  <a mat-button [routerLink]="'/settings-d/card-settings'">Settings</a>
   <a mat-button [routerLink]="'/support'">Support</a>
+  <a class="resaltado" (click)="logout()" routerLink='#'>Logout</a>
   <mat-icon
     [matBadge]="cont"
     matBadgeColor="warn"

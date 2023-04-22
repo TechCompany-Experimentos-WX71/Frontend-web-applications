@@ -18,9 +18,6 @@ import { RequestServiceComponent } from './client/request-service/request-servic
 import { SupportComponent } from './components/support/support.component';
 import { PayContractCComponent } from './client/pages/pay-contract-c/pay-contract-c.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { SettingsComponent } from './components/settings/settings.component';
-import { SettingsDComponent } from './driver/pages/settings-d/settings-d.component';
-import { SettingsCComponent } from './client/pages/settings-c/settings-c.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -43,14 +40,6 @@ const routes: Routes = [
   { path: 'support', component: SupportComponent },
   { path: 'app-pay-contract-c', component: PayContractCComponent },
   { path: 'profile/:id', component: ProfileComponent },
-  {
-    path: 'settings-c',
-    component: SettingsCComponent,
-  },
-  {
-    path: 'settings-d',
-    component: SettingsDComponent,
-  },
   //Wild Card Route for 404 request
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ];
