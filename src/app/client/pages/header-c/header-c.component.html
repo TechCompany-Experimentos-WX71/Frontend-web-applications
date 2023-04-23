@@ -7,38 +7,24 @@
   <a mat-button [routerLink]="'/my-profile-c'">My Profile</a>
   <a mat-button [routerLink]="'/search'">Search Vehicles</a>
   <a mat-button [routerLink]="'/contracts-c'">Contracts</a>
-  
+
   <a mat-button [routerLink]="'/support'">Support</a>
-  <a class="resaltado" (click)="logout()" routerLink='#'>Logout</a>
-  
-  <mat-icon
-    [matBadge]="cont"
-    matBadgeColor="warn"
-    [matBadgeHidden]="hidden"
-    (click)="
+  <a mat-button (click)="logout()" routerLink='#'>Logout</a>
+
+  <mat-icon [matBadge]="cont" matBadgeColor="warn" [matBadgeHidden]="hidden" (click)="
       toggleBadgeVisibility();
       notification.showModal();
       updateNotification(user_id);
-    "
-    >notifications_active</mat-icon
-  >
+    ">notifications_active</mat-icon>
 </mat-toolbar>
 
 <app-notifications [title]="'Notifications'" #notification>
   <div *ngFor="let clientnotification of clientnotifications">
-    <mat-card
-      class="example-card"
-      *ngIf="clientnotification.status.status == 'PENDING'"
-    >
+    <mat-card class="example-card" *ngIf="clientnotification.status.status == 'PENDING'">
       <mat-card-header>
-        <img
-          mat-card
-          class="accept"
-          src="https://i.postimg.cc/GpWLNrx0/image-47.png"
-        />
+        <img mat-card class="accept" src="https://i.postimg.cc/GpWLNrx0/image-47.png" />
 
-        <mat-card-title
-          >Congratulations! The carrier accepted your request for services.
+        <mat-card-title>Congratulations! The carrier accepted your request for services.
         </mat-card-title>
         <mat-card-subtitle>
           Click on the button to access the payment form.
@@ -46,11 +32,7 @@
       </mat-card-header>
 
       <mat-card-actions>
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          (click)="goToContract(clientnotification.id)">
+        <button mat-raised-button color="primary" type="submit" (click)="goToContract(clientnotification.id)">
           Look at the receipt
         </button>
       </mat-card-actions>
@@ -58,21 +40,15 @@
     <br />
 
     <!-- status: OFFER + visible: false = CONTRACT REJECTED -->
-    <mat-card
-      class="card-rejected"
-      *ngIf="clientnotification.status.status == 'OFFER' && clientnotification.visible == false" 
-    >
+    <mat-card class="card-rejected"
+      *ngIf="clientnotification.status.status == 'OFFER' && clientnotification.visible == false">
       <mat-card-header>
         <mat-card-title class="card-title">Contract rejected</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <mat-card class="card-history">
           <div class="client-history">
-            <img
-              [src]="clientnotification.client.photo"
-              alt="Profile"
-              class="profile-img-history"
-            />
+            <img [src]="clientnotification.client.photo" alt="Profile" class="profile-img-history" />
             <div>
               <strong>Client</strong>
               <p>{{ clientnotification.client.username }}</p>

@@ -1,12 +1,11 @@
-.mat-spacer{
+.mat-spacer {
   flex: 1 1 auto;
 }
-.logo{
+.logo {
   width: 60px;
   height: 60px;
   margin: 0px 10px;
 }
-
 
 .mat-card {
   border-radius: 20px;
@@ -18,12 +17,9 @@
   display: inline-block;
 }
 
-
 .contract-information {
   width: 21.5vw;
 }
-
-
 
 .client {
   display: flex;
@@ -67,37 +63,37 @@
   display: flex;
 }
 
-button{
+button {
   display: flex;
   align-self: center;
   justify-items: center;
   left: 30%;
-  border-radius: 5vh;bottom: 10px;
-  
+  border-radius: 5vh;
+  bottom: 10px;
 }
-.accept{
+.accept {
   width: 100px;
   height: 100px;
   display: flex;
 }
-.card-rejected{
-  background-color:#FBF0F0;
+.card-rejected {
+  background-color: #fbf0f0;
   overflow: auto;
 }
-.card-accepted{
-  background-color:#8af0cc;
+.card-accepted {
+  background-color: #8af0cc;
   overflow: auto;
 }
-.card-title{
-  color: #DE1919;
+.card-title {
+  color: #de1919;
 }
-.card-title-acc{
+.card-title-acc {
   color: #ffffff;
 }
-mat-card-title{
+mat-card-title {
   text-align: center;
 }
 
-mat-card-subtitle{
+mat-card-subtitle {
   text-align: center;
 }

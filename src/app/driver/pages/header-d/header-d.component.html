@@ -7,64 +7,40 @@
   <a mat-button [routerLink]="'/my-profile-d'">My Profile</a>
   <a mat-button [routerLink]="'/contracts-d'">Contracts</a>
   <a mat-button [routerLink]="'/support'">Support</a>
-  <a class="resaltado" (click)="logout()" routerLink='#'>Logout</a>
-  <mat-icon
-    [matBadge]="cont"
-    matBadgeColor="warn"
-    [matBadgeHidden]="hidden"
-    (click)="
+  <a mat-button (click)="logout()" routerLink='#'>Logout</a>
+  <mat-icon [matBadge]="cont" matBadgeColor="warn" [matBadgeHidden]="hidden" (click)="
       toggleBadgeVisibility();
       notification.showModal();
       updateNotification(user_id)
-    "
-    >notifications_active</mat-icon
-  >
+    ">notifications_active</mat-icon>
 </mat-toolbar>
 
 <app-notifications [title]="'Notifications'" #notification>
   <div *ngFor="let drivernotification of drivernotifications">
-    <mat-card
-      class="example-card"
-      *ngIf="drivernotification.status.status == 'HISTORY'"
-    >
+    <mat-card class="example-card" *ngIf="drivernotification.status.status == 'HISTORY'">
       <mat-card-header>
-        <img
-          mat-card
-          class="accept"
-          src="https://i.postimg.cc/mDR2DDnT/image-50.png"
-        />
+        <img mat-card class="accept" src="https://i.postimg.cc/mDR2DDnT/image-50.png" />
 
         <mat-card-title>The contract has just finished</mat-card-title>
         <mat-card-subtitle>Click below to see details</mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-actions>
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          (click)="goToContract()"
-        >
+        <button mat-raised-button color="primary" type="submit" (click)="goToContract()">
           Details
         </button>
       </mat-card-actions>
     </mat-card>
     <br />
-    <mat-card
-      class="card-rejected"
-      *ngIf="drivernotification.status.status == 'OFFER' && drivernotification.visible == false" 
-    >
+    <mat-card class="card-rejected"
+      *ngIf="drivernotification.status.status == 'OFFER' && drivernotification.visible == false">
       <mat-card-header>
         <mat-card-title class="card-title">You rejected a contract</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <mat-card class="card-history">
           <div class="client-history">
-            <img
-              [src]="drivernotification.client.photo"
-              alt="Profile"
-              class="profile-img-history"
-            />
+            <img [src]="drivernotification.client.photo" alt="Profile" class="profile-img-history" />
             <div>
               <strong>Client</strong>
               <p>{{ drivernotification.client.username }}</p>
@@ -92,21 +68,15 @@
       </mat-card-content>
     </mat-card>
     <br />
-    <mat-card
-      class="card-accepted"
-      *ngIf="drivernotification.status.status == 'OFFER' && drivernotification.visible == true" 
-    >
+    <mat-card class="card-accepted"
+      *ngIf="drivernotification.status.status == 'OFFER' && drivernotification.visible == true">
       <mat-card-header>
         <mat-card-title class="card-title-acc">You have a new offer contract</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <mat-card class="card-history">
           <div class="client-history">
-            <img
-              [src]="drivernotification.client.photo"
-              alt="Profile"
-              class="profile-img-history"
-            />
+            <img [src]="drivernotification.client.photo" alt="Profile" class="profile-img-history" />
             <div>
               <strong>Client</strong>
               <p>{{ drivernotification.client.username }}</p>
@@ -133,10 +103,7 @@
         </mat-card>
       </mat-card-content>
       <mat-card-actions>
-        <button
-          mat-raised-button
-          (click)="goOfferContracts()"
-          color="accent">
+        <button mat-raised-button (click)="goOfferContracts()" color="accent">
           <p style="color: white">See offer contracts</p>
         </button>
       </mat-card-actions>
