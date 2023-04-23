@@ -12,7 +12,7 @@
 .modalc-content {
     position: absolute;
     top:7%;
-    left: 70%;
+    left: calc(100% - 500px);
     width: 100%;
     max-width:500px;
 
