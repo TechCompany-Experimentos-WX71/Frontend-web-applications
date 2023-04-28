@@ -11,6 +11,8 @@
         <input matInput type="password" placeholder="Password" formControlName="password">
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="login()" >Login</button>
+    <div class="alert2" *ngIf="!show"> <p>    a  </p></div>
+    <div class="alert" *ngIf="show"> <p>Incorrect account or password</p></div>
     <div class="column">
         <p><a [routerLink]="'/forgot-password'"><u>Forgot Your Password?</u></a></p>
         <p>No Account Yet? <a [routerLink]="'/signup-p1'"><u>Create Account</u></a></p>

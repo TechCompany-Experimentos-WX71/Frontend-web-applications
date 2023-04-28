@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   loginFormm!: NgForm;
   logged: boolean = false;
   signInForm!: FormGroup;
+  public show: boolean=false;
 
   basePath = GlobalVariable.BASE_API_URL;
 
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
         console.log(this.signInForm.value.password);
         if (data) {
           this.router.navigate(['/home-c']);
-          alert('Welcome, client');
+          
         }
 
         if (!this.logged) { 
@@ -84,9 +85,9 @@ export class LoginComponent implements OnInit {
 
               if (data) {
                 this.router.navigate(['/home-d']);
-                alert('Welcome, driver');
+                
               } else {
-                alert('Usuario o contraseña incorrecta');
+                this.show = true
               }
             });
         }
