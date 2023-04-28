@@ -31,6 +31,11 @@ div{
     height: 100px;
     font-size: 40px; 
 }
+.mini_profile{
+    padding-left: 15vh;
+    display: flex;
+    justify-content: flex-start;
+}
 
 .info{
     width: 100%;
