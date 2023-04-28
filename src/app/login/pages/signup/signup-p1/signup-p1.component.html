@@ -105,6 +105,12 @@
             <mat-error *ngIf="phone?.errors?.['required']">
                 Phone is <strong>required</strong>
             </mat-error>
+            <mat-error *ngIf="phone?.errors?.['minlength']">
+                Phone must have at least <strong> 9 </strong> characters
+            </mat-error>
+            <mat-error *ngIf="phone?.errors?.['maxlength']">
+                Phone must haven't at least <strong> 9 </strong> characters
+            </mat-error>
 
             <mat-error *ngIf="phone?.errors?.['pattern'] &&
                 !phone?.errors?.['required']">
@@ -116,7 +122,13 @@
             <input matInput placeholder="Identify card"
                 formControlName="idCard">
             <mat-error *ngIf="idCard?.errors?.['required']">
-                ID is <strong>required</strong>
+                Identify card is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="idCard?.errors?.['minlength']">
+                Identify card must have at least <strong> 8 </strong> characters
+            </mat-error>
+            <mat-error *ngIf="idCard?.errors?.['maxlength']">
+                Identify card must haven't at least <strong> 8 </strong> characters
             </mat-error>
 
             <mat-error *ngIf="idCard?.errors?.['pattern'] &&
@@ -144,7 +156,7 @@
 
         <img src="../../../../../assets/imgs/user-vector.png"
             alt="user-vector" class="img-user">
-        <p style="text-align: center"><a href="#"><u>Upload a photo</u></a></p>
+        
         <button mat-raised-button [disabled]="!signupForm.valid" color="primary"
             (click)="registerData()">Create account</button>
 

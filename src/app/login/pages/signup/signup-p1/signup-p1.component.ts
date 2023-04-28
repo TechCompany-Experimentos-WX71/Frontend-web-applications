@@ -211,6 +211,8 @@ export class SignupP1Component implements OnInit {
     phoneControl?.setValidators([
       Validators.pattern('^[0-9]*$'),
       Validators.required,
+      Validators.maxLength(9),
+      Validators.minLength(9),
     ]);
   }
 
@@ -219,6 +221,8 @@ export class SignupP1Component implements OnInit {
     idControl?.setValidators([
       Validators.pattern('^[0-9]*$'),
       Validators.required,
+      Validators.maxLength(8),
+      Validators.minLength(8),
     ]);
   }
 
