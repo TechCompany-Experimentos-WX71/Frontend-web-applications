@@ -45,7 +45,7 @@ button{
     border-radius: 5vh;
 }
 .footer {
-    position: sticky;
-    top: 100%;
+    position: absolute;
+    top: calc(100% - 160px);
 
 }

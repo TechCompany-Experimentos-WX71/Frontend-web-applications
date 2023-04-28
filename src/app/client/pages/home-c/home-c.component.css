@@ -57,3 +57,7 @@ mat-card-title{
 .info_text{
     text-align: center;
 }
+.footer {
+    position: absolute;
+    top: calc(100% - 190px);
+}
