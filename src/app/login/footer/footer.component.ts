@@ -12,4 +12,8 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  goToUrl(){
+    window.location.href="https://techcompany-experimentos-wx71.github.io/landing-page/";
+  }
+
 }
