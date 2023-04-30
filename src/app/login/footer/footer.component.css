@@ -1,12 +1,23 @@
 /*footer*/
-footer{
-    background-color: #0f15a3;
-    color: white;
-    padding: 50px;
-    text-align: center;
-    margin-top: 20px;
-    
+footer {
+  background-color: #0f15a3;
+  position: fixed;
+  bottom: 0; /* Position the footer at the bottom of the body */
+  width: 100%; /* Set the width of the footer to fill the full width of the body */
+  height: 6rem; /* Set the height of the footer */
+  color: #fff; /* Set a text color for the footer */
+  text-align: center; /* Center the text within the footer */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-p{
-    margin-top: 15px
+
+h2 {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+.button-container {
+  margin: 0;
 }
