@@ -16,8 +16,10 @@ interface Vehicle {
   templateUrl: './search-vehicle.component.html',
   styleUrls: ['./search-vehicle.component.css'],
 })
+
 export class SearchVehicleComponent implements OnInit {
   filteredVehicules: any;
+  
 
   searchForm: FormGroup = this.formBuilder.group({
     Type_s: ['Bus', { updateOn: 'change' }],
@@ -31,13 +33,21 @@ export class SearchVehicleComponent implements OnInit {
       'Content-Type': 'application/json', //Solo acepta json
     }),
   };
-
-  Type: Vehicle[] = [
-    { value: 'vehicle-0', viewValue: 'Bus' },
-    { value: 'vehicle-1', viewValue: 'Van' },
-    { value: 'vehicle-2', viewValue: 'Cargo Truck' },
-    { value: 'vehicle-3', viewValue: 'Truck' },
+  
+ 
+  Type: {value: string, viewValue: string, imgSrc: string}[] = [
+    {value: 'vehicle-0', viewValue: 'Bus', imgSrc: 'https://media.discordapp.net/attachments/1098441742488961045/1102340772700885042/gettyimages-135327019-612x612.jpg'},
+    {value: 'vehicle-1', viewValue: 'Van', imgSrc: 'https://media.discordapp.net/attachments/1098441742488961045/1102340773732692129/2018_Ford_Transit_Custom_300_Base_2.0_facelift.jpg?width=960&height=571'},
+    {value: 'vehicle-2', viewValue: 'Cargo Truck', imgSrc: 'https://media.discordapp.net/attachments/1098441742488961045/1102340773317447710/CAMION-2-TN-CARGO-BOX-1.jpg'},
+    {value: 'vehicle-3', viewValue: 'Truck', imgSrc: 'https://media.discordapp.net/attachments/1098441742488961045/1102340772986105996/conducir-como-profesionalfuso-destacada.png'},
+    {value: 'vehicle-4', viewValue: 'Taxi', imgSrc: 'https://media.discordapp.net/attachments/1098441742488961045/1102354104656871454/2XCT3JN7ZRGMNAFSMZM2RSTH2I.jpeg?width=960&height=656'}
   ];
+  selectedVehicle: any;
+
+  clickType(vehicle:any){
+    this.selectedVehicle = vehicle;
+    console.log(this.selectedVehicle);
+  }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,7 +67,7 @@ export class SearchVehicleComponent implements OnInit {
 
   getVehicles(): Observable<any> {
     return this.http.get(
-      `${this.basePath}/vehicle/find/${this.Type_s}/${this.Size_s}`,
+      `${this.basePath}/vehicle/find/${this.selectedVehicle}/${this.Size_s}`,
       this.httpOptions
     );
   }
@@ -68,7 +78,7 @@ export class SearchVehicleComponent implements OnInit {
       console.log(data)
     });
     console.log(this.filteredVehicules);
-    console.log(`${this.basePath}/vehicle/find/${this.Type_s}/${this.Size_s}`);
+    console.log(`${this.basePath}/vehicle/find/${this.selectedVehicle}/${this.Size_s}`);
   }
 
   goToDriver(id: any) {
