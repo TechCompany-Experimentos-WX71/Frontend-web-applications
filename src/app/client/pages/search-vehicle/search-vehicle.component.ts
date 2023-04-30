@@ -23,7 +23,6 @@ export class SearchVehicleComponent implements OnInit {
 
   searchForm: FormGroup = this.formBuilder.group({
     Type_s: ['Bus', { updateOn: 'change' }],
-    Size_s: ['Bus', { updateOn: 'change' }],
   });
 
   basePath = GlobalVariable.BASE_API_URL;
@@ -47,6 +46,7 @@ export class SearchVehicleComponent implements OnInit {
   clickType(vehicle:any){
     this.selectedVehicle = vehicle;
     console.log(this.selectedVehicle);
+    this.listSearch();
   }
 
   constructor(
@@ -61,13 +61,9 @@ export class SearchVehicleComponent implements OnInit {
     return this.searchForm.get('Type_s')?.value;
   }
 
-  get Size_s() {
-    return this.searchForm.get('Size_s')?.value;
-  }
-
   getVehicles(): Observable<any> {
     return this.http.get(
-      `${this.basePath}/vehicle/find/${this.selectedVehicle}/${this.Size_s}`,
+      `${this.basePath}/vehicle/find/${this.selectedVehicle}`,
       this.httpOptions
     );
   }
@@ -78,7 +74,7 @@ export class SearchVehicleComponent implements OnInit {
       console.log(data)
     });
     console.log(this.filteredVehicules);
-    console.log(`${this.basePath}/vehicle/find/${this.selectedVehicle}/${this.Size_s}`);
+    console.log(`${this.basePath}/vehicle/find/${this.selectedVehicle}`);
   }
 
   goToDriver(id: any) {

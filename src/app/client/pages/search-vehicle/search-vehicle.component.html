@@ -1,6 +1,6 @@
 <app-header-c></app-header-c>
-
-<div class="block-container">
+<div class="scroll">
+  <div class="block-container">
   <div class="block form-container inline-block">
     <mat-card>
       <mat-card-header>
@@ -23,25 +23,8 @@
               </div>
             </div>
             
-
-            <br />
-            <!--Size_s-->
-            <mat-form-field appearance="fill" class="full-width">
-              <mat-label>Size</mat-label>
-              <input
-                type="number"
-                matInput
-                formControlName="Size_s"
-                placeholder="Ex. 15"
-              />
-            </mat-form-field>
           </mat-grid-list>
         </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" type="submit">
-            Submit
-          </button>
-        </mat-card-actions>
       </form>
     </mat-card>
   </div>
@@ -80,6 +63,6 @@
       </div>
     </mat-card>
   </div>
+  </div>
 </div>
-
-<div class="footer"><app-footers></app-footers></div>
+<app-footers></app-footers>

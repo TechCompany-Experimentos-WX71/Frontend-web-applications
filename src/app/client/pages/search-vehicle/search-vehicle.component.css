@@ -10,6 +10,11 @@
     display: flex;
     justify-content:space-evenly;
     margin: 50px;
+    
+}
+.scroll{
+    overflow-y: scroll;
+    height: 83vh;
 }
 .results{
     width: 50%;
@@ -41,11 +46,7 @@ button{
     margin-top: 1vh;
     border-radius: 5vh;
 }
-.footer {
-    position: absolute;
-    top: calc(100% - 160px);
 
-}
 
 
 .grid-container {
