@@ -1,43 +1,42 @@
 /*footer*/
-footer{
-    background-color: #0f15a3;
-    color: white;
-    padding: 50px;
-    
-    
+
+h1 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
 }
-h1{
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 24px;
-    color: #FFFFFF;
-    display: flex;   
-    align-items: center;
-    text-transform: capitalize;
-    
+button {
+  color: #ffffff;
 }
-button{
-    color: #FFFFFF;
+.iconC {
+  color: black;
 }
-.iconC{
-    color: black;
+
+footer {
+  background-color: #0f15a3;
+  position: fixed;
+  bottom: 0; /* Position the footer at the bottom of the body */
+  width: 100%; /* Set the width of the footer to fill the full width of the body */
+  height: 6rem; /* Set the height of the footer */
+  color: #fff; /* Set a text color for the footer */
+  text-align: center; /* Center the text within the footer */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-p{
-    
-    width: 150px;
-    height: 24px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-    display: flex;
-    align-items: right;
-    color: #FFFFFF;
-    white-space: nowrap;
+
+h2 {
+  margin: 0;
 }
-.footer {
-    width: 100vw;
+p {
+  margin: 0;
+}
+.button-container {
+  margin: 0;
 }

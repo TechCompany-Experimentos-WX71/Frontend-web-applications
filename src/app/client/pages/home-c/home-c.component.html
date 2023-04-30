@@ -2,14 +2,8 @@
 
 <div class="mini_profile">
   <mat-card class="inline-block profile_card">
-    <span
-      class="_badge"
-      matBadge="&#8288;"
-      matBadgeOverlap="true"
-      matBadgePosition="after"
-      matBadgeColor="accent"
-      matBadgeSize="medium"
-    >
+    <span class="_badge" matBadge="&#8288;" matBadgeOverlap="true" matBadgePosition="after" matBadgeColor="accent"
+      matBadgeSize="medium">
       <img mat-icon mat-card-avatar [src]="user.photo" alt="User Avatar" />
     </span>
     <mat-card-title class="inline-block user_name" layout-align="center center">
@@ -17,7 +11,7 @@
     </mat-card-title>
   </mat-card>
 
-  
+
 </div>
 
 <div class="info" fxLayout="row">
@@ -32,16 +26,10 @@
       </div>
       <div class="inline-block info_text">
         <mat-card-title>{{ _driver.name }}</mat-card-title>
-        <mat-card-content
-          >Type of Service <br />
+        <mat-card-content>Type of Service <br />
           {{ _driver.type }} <br />
-          Rating:</mat-card-content
-        >
-        <mat-card-content
-          *ngFor="let in of counter(5)"
-          class="rating_stars"
-          >&#9733;</mat-card-content
-        >
+          Rating:</mat-card-content>
+        <mat-card-content *ngFor="let in of counter(5)" class="rating_stars">&#9733;</mat-card-content>
       </div>
       <!--<a mat-button [routerLink]="'../my-profile-d'" >Go</a>-->
       <a mat-button (click)="goToDriver(_driver.id)">Go</a>
@@ -65,4 +53,4 @@
     </mat-card>
   </div>
 </div>
-<div class="footer"><app-footers></app-footers></div>
+<app-footers></app-footers>
