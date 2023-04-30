@@ -14,9 +14,13 @@ export class HomeCComponent implements OnInit {
   user_id: any;
   user: {
     photo: string;
-    username: string ;
+    username: string;
   };
   user_name: string = '';
+  vehicle_1: any;
+  vehicle_2: any;
+  experience_1: any;
+  experience_2: any;
   best_ranked: Array<any> = [];
   Best_ranked: Array<any> = [];
   contracts_user: Array<any> = [];
@@ -26,7 +30,7 @@ export class HomeCComponent implements OnInit {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json', //Solo acepta json
+      'Content-Type': 'application/json',
     }),
   };
 
@@ -43,6 +47,24 @@ export class HomeCComponent implements OnInit {
     this.getRanked().subscribe((data: any) => {
       this.best_ranked = data;
     });
+
+    this.getDriverVehicle(1).subscribe((data: any) => {
+      this.vehicle_1 = data;
+    });
+
+    this.getDriverVehicle(2).subscribe((data: any) => {
+      this.vehicle_2 = data;
+    });
+
+    this.getDriverExperience(1).subscribe((data: any) => {
+      console.log('Id' + data.id);
+      this.experience_1 = data;
+    });
+
+    this.getDriverExperience(2).subscribe((data: any) => {
+      this.experience_2 = data;
+    });
+
     console.log(localStorage.getItem('currentUser'));
 
     this.getContract(this.user_id).subscribe((data: any) => {
@@ -64,6 +86,14 @@ export class HomeCComponent implements OnInit {
 
   getClientById(id: any) {
     return this.http.get(`${this.basePath}/clients/${id}`);
+  }
+
+  getDriverVehicle(id: any) {
+    return this.http.get(`${this.basePath}/vehicle/${id}`);
+  }
+
+  getDriverExperience(id: any) {
+    return this.http.get(`${this.basePath}/experience/${id}`);
   }
 
   getContract(id: any): Observable<any> {
