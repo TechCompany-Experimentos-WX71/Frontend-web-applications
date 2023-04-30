@@ -69,13 +69,10 @@ export class SignupP1Component implements OnInit {
           updatedOn: 'change',
         },
       ],
-      first_name: [
-        '',
-        { validators: [Validators.required], updatedOn: 'change' },
-      ],
+      firstname: [ '', { updatedOn: 'change' }],
       last_name: [
         '',
-        { validators: [Validators.required], updatedOn: 'change' },
+        { validators: [Validators.pattern("[a-zA-Z ]*"),  Validators.required, Validators.maxLength(25),], updatedOn: 'change' },
       ],
       region: ['', { validators: [Validators.required], updatedOn: 'change' }],
       birthDate: [
@@ -88,7 +85,9 @@ export class SignupP1Component implements OnInit {
         '',
         { validators: [Validators.required], updatedOn: 'change' },
       ],
-      description: [''],
+      description: ['',
+      { validators: [Validators.maxLength(250)], updatedOn: 'change' },
+    ],
     });
   }
 
@@ -132,8 +131,8 @@ export class SignupP1Component implements OnInit {
     return this.signupForm.get('last_name');
   }
 
-  get first_name() {
-    return this.signupForm.get('last_name');
+  get firstname() {
+    return this.signupForm.get('firstname');
   }
 
   //API error handling
@@ -153,6 +152,7 @@ export class SignupP1Component implements OnInit {
   ngOnInit(): void {
     this.setPhoneValidation();
     this.setIdCardValidation();
+    this.setFirstNameValidation();
   }
 
   registerData() {
@@ -189,7 +189,7 @@ export class SignupP1Component implements OnInit {
   formToUser() {
     this.user.email = this.signupForm.value.email;
     this.user.password = this.signupForm.value.password;
-    this.user.name = this.signupForm.value.first_name;
+    this.user.name = this.signupForm.value.firstname;
     this.user.lastname = this.signupForm.value.last_name;
     this.user.region = this.signupForm.value.region;
     this.user.birthdate = this.signupForm.value.birthDate;
@@ -197,7 +197,7 @@ export class SignupP1Component implements OnInit {
     // this.user.idCard = this.signupForm.value.idCard;
     // this.user.typeofuser = this.signupForm.value.typeofuser;
     this.user.username =
-      this.signupForm.value.first_name + ' ' + this.signupForm.value.last_name;
+      this.signupForm.value.firstname + ' ' + this.signupForm.value.last_name;
     this.user.description = this.signupForm.value.description;
     this.user.photo = 'https://thumbs.dreamstime.com/b/icono-de-usuario-predeterminado-vectores-imagen-perfil-avatar-predeterminada-vectorial-medios-sociales-retrato-182347582.jpg';
   }
@@ -223,6 +223,15 @@ export class SignupP1Component implements OnInit {
       Validators.required,
       Validators.maxLength(8),
       Validators.minLength(8),
+    ]);
+  }
+  setFirstNameValidation() {
+    const Firstname = this.signupForm.get('firstname');
+    Firstname?.setValidators([
+      Validators.pattern("[a-zA-Z ]*"),
+      Validators.required,
+      Validators.maxLength(25),
+
     ]);
   }
 
