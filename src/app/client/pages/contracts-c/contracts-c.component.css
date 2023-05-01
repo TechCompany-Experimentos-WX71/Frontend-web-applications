@@ -5,7 +5,7 @@
 }
 
 .card-group {
-  display: inline-block;
+  display: table-cell;
 }
 
 .card {
@@ -15,8 +15,11 @@
 .contract-information {
   margin: 6vw;
   width: 20vw;
+  
 }
-
+.pending{
+  overflow-x: scroll;
+}
 .client-price {
   display: grid;
   grid-template-columns: 63% 37%;
