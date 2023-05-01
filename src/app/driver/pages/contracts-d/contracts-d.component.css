@@ -5,7 +5,7 @@
 }
 
 .card-group {
-  display: inline-block;
+  display: table-cell;
 }
 
 .card {
@@ -36,6 +36,9 @@
 
 .client-history {
   margin: 40px;
+}
+.offer{
+  overflow-x: scroll;
 }
 
 .profile-img-history {
