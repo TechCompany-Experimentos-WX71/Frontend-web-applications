@@ -3,20 +3,24 @@
   <h1>FastPorte</h1>
   <div class="mat-spacer"></div>
   <!-- App options -->
-  <a mat-button [routerLink]="'/home-c'">Home</a>
-  <a mat-button [routerLink]="'/my-profile-c'">My Profile</a>
-  <a mat-button [routerLink]="'/search'">Search Vehicles</a>
-  <a mat-button [routerLink]="'/contracts-c'">Contracts</a>
-
-  <a mat-button [routerLink]="'/support'">Support</a>
-  <a mat-button (click)="logout()" routerLink='#'>Logout</a>
-
+  <button class="menu-icon" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="menu-items" [ngClass]="{'show-menu-items': isOpen}">
+    <a mat-button [routerLink]="'/home-c'">Home</a>
+    <a mat-button [routerLink]="'/my-profile-c'">My Profile</a>
+    <a mat-button [routerLink]="'/search'">Search Vehicles</a>
+    <a mat-button [routerLink]="'/contracts-c'">Contracts</a>
+    <a mat-button [routerLink]="'/support'">Support</a>
+    <a mat-button (click)="logout()" routerLink='#'>Logout</a>
+  </div>
   <mat-icon [matBadge]="cont" matBadgeColor="warn" [matBadgeHidden]="hidden" (click)="
       toggleBadgeVisibility();
       notification.showModal();
       updateNotification(user_id);
     ">notifications_active</mat-icon>
 </mat-toolbar>
+
 
 <app-notifications [title]="'Notifications'" #notification>
   <div *ngFor="let clientnotification of clientnotifications">

@@ -16,7 +16,7 @@ export class HeaderCComponent implements OnInit {
   unreadnoti: any;
   pendingcontrats: any;
   user_id: any;
-
+  isOpen = false;
   constructor(private http: HttpClient, private router: Router) {}
 
   //basePath = 'http://localhost:3000/api/v1/';
@@ -54,6 +54,11 @@ export class HeaderCComponent implements OnInit {
     //   this.pendingcontrats = data;
     // });
   }
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
+  }
+  
+  
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);

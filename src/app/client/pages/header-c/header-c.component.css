@@ -89,3 +89,31 @@ mat-card-title {
 mat-card-subtitle {
   text-align: center;
 }
+.menu-icon {
+  display: none;
+}
+@media (max-width: 412px) {
+  .menu-items {
+    display: none;
+    position: absolute;
+    top: 64px;
+    right: 0;
+    background-color: #0f15a3;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    z-index: 2;
+  }
+
+  .menu-items a {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .show-menu-items {
+    display: block !important;
+  }
+}
