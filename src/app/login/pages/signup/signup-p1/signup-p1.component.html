@@ -18,9 +18,17 @@
 
         <mat-form-field>
             <input matInput placeholder="First Name"
-                formControlName="first_name">
-            <mat-error *ngIf="first_name?.errors?.['required']">First name is
-                <strong>required</strong>
+                formControlName="firstname">
+
+            
+            <mat-error *ngIf="firstname?.errors?.['maxlength']">
+                First name must haven't at least <strong> 25 </strong> characters
+            </mat-error>
+            <mat-error *ngIf="firstname?.errors?.['required']">
+                First name is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="firstname?.errors?.['pattern']">
+                First name have only <strong>letters</strong>
             </mat-error>
 
         </mat-form-field>
@@ -29,6 +37,13 @@
                 formControlName="last_name">
             <mat-error *ngIf="last_name?.errors?.['required']">Last name is <strong>required</strong>
             </mat-error>
+            <mat-error *ngIf="firstname?.errors?.['pattern']">
+                Last name have only <strong>letters</strong>
+            </mat-error>
+            <mat-error *ngIf="firstname?.errors?.['maxlength']">
+                Last name must haven't at least <strong> 25 </strong> characters
+            </mat-error>
+
         </mat-form-field>
 
         <mat-form-field >
@@ -152,6 +167,9 @@
             <textarea type="text" matInput placeholder="Type a
                 description
                 about you" formControlName="description"></textarea>
+                <mat-error *ngIf="description?.errors?.['maxlength']">
+                Description must haven't at least <strong> 250 </strong> characters
+            </mat-error>
         </mat-form-field>
 
         <img src="../../../../../assets/imgs/user-vector.png"

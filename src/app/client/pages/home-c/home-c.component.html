@@ -1,68 +1,80 @@
 <app-header-c></app-header-c>
 
 <div class="mini_profile">
-  <mat-card class="inline-block profile_card">
-    <span
-      class="_badge"
-      matBadge="&#8288;"
-      matBadgeOverlap="true"
-      matBadgePosition="after"
-      matBadgeColor="accent"
-      matBadgeSize="medium"
-    >
-      <img mat-icon mat-card-avatar [src]="user.photo" alt="User Avatar" />
-    </span>
-    <mat-card-title class="inline-block user_name" layout-align="center center">
-      <strong>Hi,<br />{{ user.username }} &excl;</strong>
+  <mat-card class="profile_card">
+    <mat-card-title class="user_name" layout-align="center center">
+      <img mat-icon [src]="user.photo" alt="User Avatar" />
+
+
+      <div class="username">
+        <span class="badge" matBadge="&#8288;" matBadgeOverlap="true" matBadgePosition="after" matBadgeColor="accent"
+          matBadgeSize="medium"> </span>
+        <span>&nbsp;&nbsp;Hi, {{ user.username }}</span>
+      </div>
     </mat-card-title>
   </mat-card>
-
-  
 </div>
 
-<div class="info" fxLayout="row">
-  <div class="popular_drivers" class="inline-block">
-    <mat-card-title class="home_title">
-      <strong>Popular Drivers</strong>
-    </mat-card-title>
+<div class="info">
+  <!--Ppopular drivers-->
+  <div class="popular_drivers_container">
+    <div>
+      <mat-card-title class="home_title">
+        <strong>| Popular Drivers</strong>
+      </mat-card-title>
+    </div>
+    <div class="popular_drivers">
+      <!------------------Card 1------------------>
+      <mat-card *ngIf="vehicle_1 && experience_1">
+        <div>
+          <img mat-card-avatar [src]="best_ranked[1].photo" alt="User Avatar" />
+        </div>
+        <div class="info_text">
+          <mat-card-title>{{ best_ranked[1].name }}</mat-card-title>
+          <mat-card-content>Job: {{ experience_1[0].job }}</mat-card-content>
+          <mat-card-content> Category: {{ vehicle_1.category }}</mat-card-content>
+          <mat-card-content *ngFor="let in of counter(5)" class="rating_stars">&#9733;</mat-card-content>
+        </div>
+        <a mat-button (click)="goToDriver(best_ranked[1].id)">Go</a>
+      </mat-card>
 
-    <mat-card *ngFor="let _driver of best_ranked.slice(0,2)">
-      <div class="inline-block">
-        <img mat-card-avatar [src]="_driver.photo" alt="User Avatar" />
-      </div>
-      <div class="inline-block info_text">
-        <mat-card-title>{{ _driver.name }}</mat-card-title>
-        <mat-card-content
-          >Type of Service <br />
-          {{ _driver.type }} <br />
-          Rating:</mat-card-content
-        >
-        <mat-card-content
-          *ngFor="let in of counter(5)"
-          class="rating_stars"
-          >&#9733;</mat-card-content
-        >
-      </div>
-      <!--<a mat-button [routerLink]="'../my-profile-d'" >Go</a>-->
-      <a mat-button (click)="goToDriver(_driver.id)">Go</a>
-    </mat-card>
+      <!-------------------Card 2------------------>
+      <mat-card *ngIf="vehicle_2 && experience_2">
+        <div>
+          <img mat-card-avatar [src]="best_ranked[2].photo" alt="User Avatar" />
+        </div>
+        <div class="info_text">
+          <mat-card-title>{{ best_ranked[2].name }}</mat-card-title>
+          <mat-card-content>Job: {{ experience_2[0].job }}</mat-card-content>
+          <mat-card-content> Category: {{ vehicle_2.category }}</mat-card-content>
+          <mat-card-content *ngFor="let in of counter(5)" class="rating_stars">&#9733;</mat-card-content>
+        </div>
+        <a mat-button (click)="goToDriver(best_ranked[2].id)">Go</a>
+      </mat-card>
+    </div>
   </div>
 
-  <div class="contracts" class="inline-block">
-    <mat-card-title class="home_title">
-      <strong>Lasts Contracts</strong>
-    </mat-card-title>
 
-    <mat-card *ngFor="let _contract of contracts_user">
-      <div class="inline-block">
-        <img mat-card-avatar [src]="_contract.driver.photo" alt="User Avatar" />
-      </div>
-      <div class="inline-block info_text">
-        <mat-card-title>{{ _contract.driver.name }}</mat-card-title>
-        <mat-card-content>From {{ _contract.from }}</mat-card-content>
-        <mat-card-content>To {{ _contract.to }}</mat-card-content>
-      </div>
-    </mat-card>
+  <div class="contracts_container">
+    <mat-card-title class="home_title">
+      <strong>| Lasts Contracts</strong>
+    </mat-card-title>
+    <div class="contracts">
+      <mat-card *ngFor="let _contract of contracts_user">
+        <div>
+          <img mat-card-avatar [src]="_contract.driver.photo" alt="User Avatar" />
+        </div>
+        <div class="info_text">
+          <mat-card-title>{{ _contract.driver.name }}</mat-card-title>
+          <mat-card-content>From {{ _contract.from }}</mat-card-content>
+          <mat-card-content>To {{ _contract.to }}</mat-card-content>
+        </div>
+      </mat-card>
+    </div>
   </div>
+
 </div>
-<div class="footer"><app-footers></app-footers></div>
+<br>
+<br>
+<br>
+<app-footers></app-footers>

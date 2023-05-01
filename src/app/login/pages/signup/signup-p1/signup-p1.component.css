@@ -64,3 +64,6 @@ button{
         width: 50vw;
     }
 }
+.signup1{
+    overflow-y: scroll;
+}
