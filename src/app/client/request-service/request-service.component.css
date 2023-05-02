@@ -2,7 +2,10 @@
     width: 30vw;
     height: auto;
 } */
-
+.container{
+    overflow-y: scroll;
+    height: 90vh;
+}
 .card {
     display: flex;
     justify-content: center;
