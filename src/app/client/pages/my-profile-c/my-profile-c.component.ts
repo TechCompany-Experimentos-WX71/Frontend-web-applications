@@ -5,6 +5,7 @@ import { GlobalVariable } from 'src/app/shared/GlobalVariable';
 import { DescriptionData } from 'src/app/components/add-info-one/add-info-one.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AddInfoOneComponent } from 'src/app/components/add-info-one/add-info-one.component';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 @Component({
   selector: 'app-my-profile-c',
   templateUrl: './my-profile-c.component.html',
@@ -15,8 +16,11 @@ export class MyProfileCComponent implements OnInit {
   user: any;
   comments: any;
   user_id: any;
+  Edit!: FormGroup;
+  show: boolean = false;
+  result: any;
   descriptionData:DescriptionData;
-  constructor(private http: HttpClient, private router: Router, public dialog: MatDialog) {
+  constructor(private http: HttpClient, private router: Router, public dialog: MatDialog, private formBuilder: FormBuilder) {
     this.descriptionData={} as DescriptionData;
   }
 
@@ -30,18 +34,34 @@ export class MyProfileCComponent implements OnInit {
     }),
   };
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddInfoOneComponent, {
-      width: '20%',
-      
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      //console.log('The dialog was closed');
-      //this.commentData = result;
-      console.log(result);
-    });
+    this.show= true;
+    
   }
+  closeDialog(): void{
+    this.show= false;
+
+  }
+
+  searchDialog(): void{
+    this.result = this.Edit.value.description;
+    
+    this.user.description = this.result;
+      console.log(this.user);
+      this.saveDescription().subscribe((data: any) => {
+        console.log(data);
+        this.ngOnInit();
+      })
+
+      this.show= false;
+  }
+  
+
+  
   ngOnInit(): void {
+    this.Edit = this.formBuilder.group({
+      description: [''],
+      password: [''],
+    });
     this.user_id = localStorage.getItem('currentUser');
     this.getUser(this.user_id).subscribe((data: any) => {
       this.user = data;
@@ -55,22 +75,11 @@ export class MyProfileCComponent implements OnInit {
       this.comments = data;
       console.log(this.comments);
     });
+    
   }
   openDescriptionModal() {
-    const dialogRef = this.dialog.open(AddInfoOneComponent, {
-      width: '250px',
-      data: this.descriptionData,
-
-    });
-    console.log(this.descriptionData)
-    dialogRef.afterClosed().subscribe(result => {
-      this.user.description = result.Description;
-      console.log(this.user);
-      this.saveDescription().subscribe((data: any) => {
-        console.log(data);
-        this.ngOnInit();
-      })
-    });
+    this.Edit.value.description = this.user.description;
+    this.show= true;
   }
   saveDescription() {
 
